@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MODIFIED: Broadened title -->
+    <title>LUMX | Precision Electrical Contractors</title> 
+    <!-- MODIFIED: Broadened meta description -->
+    <meta name="description" content="LUMX Electrical: High-end electrical solutions for residential, commercial, and specialist sectors in Melbourne. Experience, quality, and guaranteed compliance.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lumx: {
+                            bg: '#0F0F0F', /* Darker, richer black */
+                            card: 'rgba(30, 30, 30, 0.6)', /* Glass effect base */
+                            cyan: '#00FFFF',
+                            text: '#FFFFFF',
+                            subtext: '#A1A1AA',
+                            border: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    animation: {
+                        'slow-zoom': 'zoom 20s infinite alternate',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'flicker-on': 'flicker 1.5s linear forwards',
+                    },
+                    keyframes: {
+                        zoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' },
+                        },
+                        flicker: {
+                            '0%': { opacity: '0' },
+                            '10%': { opacity: '0' },
+                            '11%': { opacity: '0.4' },
+                            '12%': { opacity: '0' },
+                            '13%': { opacity: '0.4' },
+                            '14%': { opacity: '0' },
+                            '30%': { opacity: '1', textShadow: '0 0 10px rgba(0,255,255,0.2)' },
+                            '100%': { opacity: '1', textShadow: '0 0 20px rgba(0,255,255,0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth Scrolling & Base */
+        html { scroll-behavior: smooth; }
+        body { background-color: #0F0F0F; overflow-x: hidden; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0F0F0F; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00FFFF; }
+
+        /* The "Tech Grid" Background Pattern */
+        .tech-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hover Effects */
+        .glow-border:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+        }
+
+        /* Text Gradient */
+        .text-gradient-cyan {
+            background: linear-gradient(to right, #FFFFFF, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Nav Transition Classes */
+        .nav-hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+        
+        /* Custom Text Glow */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Fixed Background for Hero Section (New CSS) */
+        .hero-fixed-bg {
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed; /* Parallax effect */
+            background-position: center center;
+            opacity: 0.4;
+            filter: grayscale(100%);
+        }
+
+        /* UX FIX: Disable fixed background attachment on mobile for smooth scrolling */
+        @media (max-width: 768px) {
+            .hero-fixed-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        /* NEW ANIMATION: Color Pulse for the Tick (DULL GREY TO BRIGHT CYAN) */
+        @keyframes neon-pulse {
+            0%, 100% { 
+                /* Dull/Unseen State */
+                stroke: #A1A1AA; /* lumx-subtext, dull grey */
+                filter: drop-shadow(0 0 1px rgba(161, 161, 170, 0.1));
+                opacity: 0.15; /* Almost unseen */
+            }
+            50% { 
+                /* Bright Cyan State */
+                stroke: #00FFFF; /* Pure Cyan */
+                filter: drop-shadow(0 0 25px rgba(0, 255, 255, 1)); /* Maximum bright cyan glow */
+                opacity: 1;
+            }
+        }
+        .animate-neon-pulse {
+            animation: neon-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-lumx-bg text-lumx-text antialiased relative">
+
+    <!-- Background Tech Grid (Fixed) -->
+    <div class="fixed inset-0 tech-grid pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 top-0 start-0 border-b border-lumx-border bg-[#0F0F0F]/80 backdrop-blur-xl transition-all duration-500">
+        <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-5">
+            
+            <!-- LOGO -->
+            <a href="#" class="flex items-center space-x-3 group relative z-50">
+                <!-- Added id="logo-container" and transition classes -->
+                <div id="logo-container" class="flex flex-col leading-none transition-transform duration-500 origin-left">
+                    <span class="text-2xl font-black tracking-tighter text-white group-hover:opacity-80 transition-opacity">LUMX<span class="text-lumx-cyan">.</span></span>
+                </div>
+            </a>
+            
+            <!-- CTA & Mobile Menu -->
+            <div id="nav-cta" class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse transition-all duration-500 ease-in-out">
+                <!-- FIX: Hide CTA on mobile (hidden) to prevent horizontal overflow. Show from md up (md:inline-flex) -->
+                <a href="#contact" class="hidden md:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-bold text-gray-900 rounded-none group bg-gradient-to-br from-lumx-cyan to-lumx-cyan group-hover:from-lumx-cyan group-hover:to-lumx-cyan hover:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200">
+                    <span class="relative px-6 py-2.5 transition-all ease-in duration-75 bg-gray-900 text-white group-hover:bg-opacity-0 uppercase tracking-widest">
+                        Enquire
+                    </span>
+                </a>
+                <!-- Mobile menu toggle button -->
+                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open menu</span>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Menu Links -->
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 transition-all duration-500 ease-in-out" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                    <li><a href="#sectors" class="block py-2 px-3 text-lumx-subtext hover:text-white hover:shadow-[0_1px_0_0_#00FFFF] transition-all text-xs uppercase tracking-widest">Capabilities</a></li>
+                    <li><a href="#methodology" class="block py-2 px-3 text-lumx-subtext hover:text-white hover:shadow-[0_1px_0_0_#00FFFF] transition-all text-xs uppercase tracking-widest">The Standard</a></li>
+                    <li><a href="#contact" class="block py-2 px-3 text-lumx-subtext hover:text-white hover:shadow-[0_1px_0_0_#00FFFF] transition-all text-xs uppercase tracking-widest">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- MODIFIED: Tightened vertical padding -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden z-10 pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-24 lg:pb-24">
+        <!-- Background Image with Slow Zoom Animation (Now using CSS for parallax) -->
+        <div class="absolute inset-0 z-0 hero-fixed-bg animate-slow-zoom"></div>
+        <!-- Gradient Overlay for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0F0F0F]/30 via-[#0F0F0F]/60 to-[#0F0F0F] z-10"></div>
+        
+        <!-- MODIFIED: Reduced large top margin -->
+        <div class="relative z-20 text-center max-w-6xl px-4 mt-10 md:mt-6 lg:mt-0" data-aos="fade-up" data-aos-duration="1000">
+            <!-- Updated System Status copy -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-lumx-cyan/30 bg-lumx-cyan/5 mb-8 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-lumx-cyan animate-pulse"></span>
+                <span class="text-lumx-cyan text-[10px] font-mono uppercase tracking-widest">Licensed & Insured</span>
+            </div>
+            
+            <h1 class="mb-8 text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase leading-[0.9]">
+                <span class="block" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">Environments</span>
+                <span class="block text-gradient-cyan text-glow" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">Illuminated.</span>
+            </h1>
+            
+            <!-- Strategic Tagline for Clarity (Point 1) -->
+            <p class="mb-12 text-lg md:text-xl text-lumx-subtext max-w-2xl mx-auto font-light leading-relaxed border-l-2 border-lumx-cyan pl-6 text-left md:text-center md:border-l-0 md:pl-0" data-aos="fade-up" data-aos-delay="600">
+                Design-led electrical contractor, Melbourne. We bridge the gap between design intent and technical execution. <br class="hidden md:block">Precision electrical solutions for architectural, commercial, and private spaces.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6" data-aos="fade-up" data-aos-delay="800">
+                <a href="#contact" class="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-white px-8 font-medium text-black transition-all duration-300 hover:bg-lumx-cyan hover:text-black focus:ring-2 focus:ring-lumx-cyan focus:ring-offset-2 focus:ring-offset-gray-900">
+                    <span class="mr-2 text-sm font-bold uppercase tracking-widest">Start Conversation</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="#sectors" class="inline-flex h-14 items-center justify-center border border-white/20 bg-transparent px-8 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white/10 hover:border-lumx-cyan">
+                    View Capabilities
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The "Stats Bar" -->
+    <!-- MODIFIED: Reduced negative margin from -mt-24 to -mt-12 to push the bar down and create spacing -->
+    <div class="relative z-30 -mt-12 mx-4 md:mx-12 lg:mx-32" data-aos="fade-up" data-aos-delay="200">
+        <div class="glass-card grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 rounded-xl overflow-hidden">
+            <div class="p-6 md:p-8 text-center group hover:bg-white/5 transition-colors">
+                <span class="block text-3xl md:text-4xl font-black text-white mb-1 group-hover:text-lumx-cyan transition-colors">100%</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-lumx-subtext">Accountability</span>
+            </div>
+            <div class="p-6 md:p-8 text-center group hover:bg-white/5 transition-colors">
+                <span class="block text-3xl md:text-4xl font-black text-white mb-1 group-hover:text-lumx-cyan transition-colors">ZERO</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-lumx-subtext">Compromise</span>
+            </div>
+             <div class="p-6 md:p-8 text-center group hover:bg-white/5 transition-colors">
+                <span class="block text-3xl md:text-4xl font-black text-white mb-1 group-hover:text-lumx-cyan transition-colors">VERIFIED</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-lumx-subtext">Code Compliant</span>
+            </div>
+            <!-- FIXED: Invalid Tailwind class hover:bg:white/5 changed to hover:bg-white/5 -->
+            <div class="p-6 md:p-8 text-center group hover:bg-white/5 transition-colors">
+                <span class="block text-3xl md:text-4xl font-black text-white mb-1 group-hover:text-lumx-cyan transition-colors">REC</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-lumx-subtext">Registered Contractor</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid (Bento Layout) -->
+    <section id="sectors" class="py-32 px-4 md:px-12 lg:px-24 relative z-10">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-right">
+                <div>
+                    <h2 class="text-lumx-cyan font-mono font-bold tracking-widest uppercase text-xs mb-4">Capabilities</h2>
+                    <h3 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tight">Project Scope</h3>
+                </div>
+                <p class="text-lumx-subtext max-w-md mt-6 md:mt-0 text-right border-r-2 border-lumx-cyan pr-6">
+                    Our expertise scales from bespoke architectural details to comprehensive system upgrades.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
+                
+                <!-- Card 1: Private & Architectural (Wide) -->
+                <div class="col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end rounded-xl" data-aos="fade-up">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 grayscale"></div>
+                    <div class="relative z-10">
+                        <!-- Restored original tags -->
+                        <span class="text-lumx-cyan font-mono text-[10px] font-bold tracking-widest uppercase border border-lumx-cyan/30 bg-black/50 px-3 py-1 mb-4 inline-block backdrop-blur-md rounded-full">Residential</span>
+                        <!-- Restored original title -->
+                        <h3 class="mb-2 text-3xl font-bold text-white">Private & Architectural</h3>
+                        <p class="text-lumx-subtext max-w-lg">Complex installations for private clients. Automation, architectural lighting control, and high-spec renovations.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Critical Maintenance -->
+                <div class="glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-lumx-cyan/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-lumx-cyan"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" /></svg>
+                    </div>
+                    <div>
+                        <!-- Restored original title -->
+                        <h3 class="mb-2 text-2xl font-bold text-white">Critical Maintenance</h3>
+                        <p class="text-lumx-subtext text-sm">Insurance reports, safety audits, and rapid response. Keeping assets compliant and operational.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Compliance Assurance -->
+                <div class="glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up">
+                    <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-lumx-cyan/20 transition-colors">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-lumx-cyan"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="mb-2 text-2xl font-bold text-white">Compliance Assurance</h3>
+                        <p class="text-lumx-subtext text-sm">We verify every installation against AS/NZS 3000 standards. Rigorous testing for total peace of mind.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Workspace & Retail (Wide) -->
+                <div class="col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end md:order-last rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 grayscale"></div>
+                    <div class="relative z-10">
+                        <!-- Restored original tag -->
+                        <span class="text-lumx-cyan font-mono text-[10px] font-bold tracking-widest uppercase border border-lumx-cyan/30 bg-black/50 px-3 py-1 mb-4 inline-block backdrop-blur-md rounded-full">Commercial</span>
+                        <!-- Restored original title -->
+                        <h3 class="mb-2 text-3xl font-bold text-white">Workspace & Retail</h3>
+                        <p class="text-lumx-subtext max-w-lg">Fit-outs for modern environments. From office data backbones to feature lighting in retail spaces. Functionality meets aesthetic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="py-32 bg-gradient-to-b from-[#0F0F0F] to-[#151515] border-y border-white/5 relative">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-12 lg:px-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-lumx-cyan font-mono font-bold tracking-widest uppercase text-xs mb-4 block">The Standard</span>
+                    <h2 class="text-5xl font-black text-white mb-8 leading-tight">Direct oversight. <br>Uncompromising quality.</h2>
+                    <!-- MODIFIED: Removed bold 'direct accountability' and rewrote to avoid repeating 'direct' -->
+                    <p class="text-lumx-subtext text-lg mb-8 leading-relaxed">
+                        With over 15 years of focused experience, LUMX offers total responsibility for project outcomes. You deal with the Director, ensuring every detail aligns with the design intent.
+                    </p>
+
+                    <!-- NEW: Ideal Client Filter Block -->
+                    <div class="mt-12 mb-8 p-6 glass-card rounded-xl border border-lumx-cyan/30 bg-lumx-cyan/5" data-aos="fade-up" data-aos-delay="100">
+                        <p class="text-white font-bold uppercase tracking-widest text-sm mb-4">LUMX works best with:</p>
+                        <ul class="space-y-3 text-lumx-subtext text-base list-none pl-0">
+                            <li class="flex items-start">
+                                <span class="text-lumx-cyan mr-3 flex-shrink-0">&rarr;</span>
+                                Architects and designers who care about detail.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lumx-cyan mr-3 flex-shrink-0">&rarr;</span>
+                                Builders who want one point of contact and clean handovers.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-lumx-cyan mr-3 flex-shrink-0">&rarr;</span>
+                                Owners and managers who need compliant, reliable electrical systems.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start group">
+                            <div class="w-8 h-8 rounded bg-lumx-cyan/10 flex items-center justify-center mr-4 mt-1 group-hover:bg-lumx-cyan/20 transition-colors">
+                                <span class="text-lumx-cyan font-bold text-xs">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold uppercase tracking-wide text-sm">Single Point of Contact</h4>
+                                <p class="text-lumx-subtext text-sm mt-1">No sales reps. No middle-men. Just technical expertise.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start group">
+                            <div class="w-8 h-8 rounded bg-lumx-cyan/10 flex items-center justify-center mr-4 mt-1 group-hover:bg-lumx-cyan/20 transition-colors">
+                                <span class="text-lumx-cyan font-bold text-xs">02</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold uppercase tracking-wide text-sm">Audit-Ready Handover</h4>
+                                <p class="text-lumx-subtext text-sm mt-1">We document critical install stages. Permanent proof of compliance.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start group">
+                            <div class="w-8 h-8 rounded bg-lumx-cyan/10 flex items-center justify-center mr-4 mt-1 group-hover:bg-lumx-cyan/20 transition-colors">
+                                <span class="text-lumx-cyan font-bold text-xs">03</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold uppercase tracking-wide text-sm">Site Hygiene</h4>
+                                <p class="text-lumx-subtext text-sm mt-1">We treat your site like a showroom. Spotless handover.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Abstract Technical Graphic (INLINE CHECKMARK SVG - The Compliance "Tick") -->
+                <div class="relative h-[500px] glass-card overflow-hidden group border border-white/10 rounded-xl" data-aos="fade-left">
+                    <!-- Large Checkmark Icon centered -->
+                    <div class="absolute inset-0 flex items-center justify-center z-0 opacity-40">
+                        <!-- FIX: Added text-lumx-cyan class explicitly to ensure the base stroke color is set and removed hover classes -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-64 h-64 animate-neon-pulse text-lumx-cyan">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+
+                    <!-- Overlay UI Element (Copy Tone Adjusted) -->
+                    <div class="absolute bottom-8 left-8 right-8 p-6 bg-black/80 backdrop-blur-md border-l-4 border-lumx-cyan rounded-md z-10">
+                        <span class="font-mono text-[10px] text-lumx-cyan uppercase tracking-widest mb-1 block">Audit Status</span>
+                        <p class="text-white font-bold text-lg">Code Compliance Verified</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Terminal Lead Capture -->
+    <footer id="contact" class="bg-[#050505] pt-32 pb-12 border-t border-lumx-border relative overflow-hidden">
+        <!-- Background decorative glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-lumx-cyan to-transparent opacity-50"></div>
+        
+        <div class="max-w-screen-xl mx-auto px-4 md:px-12 lg:px-24 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-24">
+                <div data-aos="fade-up">
+                    <h2 class="text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter uppercase leading-none">
+                        Start the <br><span class="text-lumx-cyan">Conversation.</span>
+                    </h2>
+                    <p class="text-lg text-lumx-subtext mb-10 max-w-md">
+                        Direct engagement. Technical expertise. Discuss your project directly with the Director.
+                    </p>
+                    
+                    <!-- Terminal Style Form (NETLIFY ENABLED - EXPANDED) -->
+                    <form name="contact" method="POST" data-netlify="true" class="max-w-md space-y-4 font-mono text-sm">
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <!-- NAME FIELD (New) -->
+                        <div class="relative group">
+                            <div class="relative bg-black p-1">
+                                <input type="text" name="name" id="name" class="block w-full p-4 bg-[#111] border border-gray-800 text-white placeholder-gray-500 focus:border-lumx-cyan focus:ring-1 focus:ring-lumx-cyan outline-none transition-all rounded-sm" placeholder="> Your Name / Company" required>
+                            </div>
+                        </div>
+
+                        <!-- EMAIL FIELD (Existing) -->
+                        <div class="relative group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-lumx-cyan to-blue-600 rounded-sm opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 blur"></div>
+                            <div class="relative bg-black p-1">
+                                <input type="email" name="email" id="email" class="block w-full p-4 bg-[#111] border border-gray-800 text-white placeholder-gray-500 focus:border-lumx-cyan focus:ring-1 focus:ring-lumx-cyan outline-none transition-all rounded-sm" placeholder="> Enter your email address" required>
+                            </div>
+                        </div>
+
+                        <!-- MESSAGE FIELD (New) -->
+                        <div class="relative group">
+                            <div class="relative bg-black p-1">
+                                <textarea name="message" id="message" rows="4" class="block w-full p-4 bg-[#111] border border-gray-800 text-white placeholder-gray-500 focus:border-lumx-cyan focus:ring-1 focus:ring-lumx-cyan outline-none transition-all rounded-sm" placeholder="> Project details, scope, and timeline"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-white hover:bg-lumx-cyan text-black font-bold uppercase tracking-widest px-8 py-4 transition-all duration-300 rounded-sm">
+                            Initiate Request
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 pt-4" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <h4 class="text-white font-mono font-bold uppercase text-xs mb-8 tracking-widest text-lumx-cyan">Contact Protocol</h4>
+                        <ul class="space-y-6 text-lumx-subtext text-sm">
+                            <li class="hover:text-white transition-colors cursor-pointer">projects@lumx.com.au</li>
+                            <li class="hover:text-white transition-colors cursor-pointer">0430 063 087</li>
+                            <li>Melbourne, VIC</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-mono font-bold uppercase text-xs mb-8 tracking-widest text-lumx-cyan">Navigation</h4>
+                        <ul class="space-y-6 text-lumx-subtext text-sm">
+                            <li><a href="#sectors" class="hover:text-lumx-cyan transition-colors">Capabilities</a></li>
+                            <li><a href="#methodology" class="hover:text-lumx-cyan transition-colors">Approach</a></li>
+                            <li><a href="#contact" class="hover:text-lumx-cyan transition-colors">Enquire</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600 font-mono">
+                <div class="flex items-center gap-6 mb-4 md:mb-0">
+                    <span class="text-gray-500">Licence: [ REC 26926 ]</span>
+                    <span class="text-gray-500">ABN: [ 64 838 840 023 ]</span>
+                </div>
+                <p>&copy; 2025 Lumx Electrical Co.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Animation -->
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // UX FIX: Mobile Menu Toggle Functionality
+        const navToggle = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+        const navMenu = document.getElementById('navbar-sticky');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+                this.setAttribute('aria-expanded', !isExpanded);
+                navMenu.classList.toggle('hidden');
+                // Ensure CTA is visible when menu is open in mobile
+                if (!isExpanded) {
+                    document.getElementById('nav-cta').classList.remove('nav-hidden');
+                }
+            });
+        }
+
+
+        // Scroll Script for "Smart Nav" Effect (Revised for logo-only visibility and transparent bar on scroll)
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            const links = document.getElementById('navbar-sticky');
+            const cta = document.getElementById('nav-cta');
+            const logoContainer = document.getElementById('logo-container');
+            
+            if (window.scrollY > 50) {
+                // SCROLL DOWN MODE: Minimal Nav (Logo Only, Transparent Bar)
+                
+                // 1. Hide the CTA button
+                cta.classList.add('nav-hidden'); 
+                
+                // 2. Hide the main menu links (The "header gone" effect)
+                // Only hide on desktop/scroll; keep visible if mobile menu is actively expanded
+                if (window.innerWidth >= 768) {
+                    links.classList.add('nav-hidden');
+                }
+
+                // 3. Make navigation transparent (Removing background, blur, and border classes)
+                nav.classList.remove('bg-[#0F0F0F]/80', 'backdrop-blur-xl', 'border-b', 'border-lumx-border');
+                nav.classList.add('bg-transparent', 'border-transparent');
+                
+                // 4. Shrink Logo (Logo remains visible)
+                logoContainer.classList.add('scale-75', '-translate-x-4');
+                
+            } else {
+                // TOP MODE: Full Nav
+                
+                // 1. Show everything
+                cta.classList.remove('nav-hidden');
+                links.classList.remove('nav-hidden'); // Restore links
+                
+                // 2. Revert to Glass Effect (Restoring background, blur, and border classes)
+                nav.classList.add('bg-[#0F0F0F]/80', 'backdrop-blur-xl', 'border-b', 'border-lumx-border');
+                nav.classList.remove('bg-transparent', 'border-transparent');
+
+                // 3. Restore Logo Size
+                logoContainer.classList.remove('scale-75', '-translate-x-4');
+            }
+        });
+    </script>
+</body>
+</html>
