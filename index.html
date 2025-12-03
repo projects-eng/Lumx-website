@@ -59,7 +59,11 @@
     <style>
         /* Smooth Scrolling & Base */
         html { scroll-behavior: smooth; }
-        body { background-color: #0F0F0F; overflow-x: hidden; }
+        /* ADDED: Extra safety check to prevent horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -163,9 +167,10 @@
             </a>
             
             <!-- CTA & Mobile Menu -->
-            <div id="nav-cta" class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse transition-all duration-500 ease-in-out">
-                <!-- FIX: Hide CTA on mobile (hidden) to prevent horizontal overflow. Show from md up (md:inline-flex) -->
-                <a href="#contact" class="hidden md:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-bold text-gray-900 rounded-none group bg-gradient-to-br from-lumx-cyan to-lumx-cyan group-hover:from-lumx-cyan group-hover:to-lumx-cyan hover:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200">
+            <!-- FIX: Changed space-x-3 md:space-x-0 to space-x-1 md:space-x-3 for tighter mobile spacing -->
+            <div id="nav-cta" class="flex md:order-2 space-x-1 md:space-x-3 rtl:space-x-reverse transition-all duration-500 ease-in-out">
+                <!-- FIX: Added 'hidden' class to hide on mobile. Removed me-2. Button is now only visible from md:inline-flex up. -->
+                <a href="#contact" class="hidden md:inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-xs font-bold text-gray-900 rounded-none group bg-gradient-to-br from-lumx-cyan to-lumx-cyan group-hover:from-lumx-cyan group-hover:to-lumx-cyan hover:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200">
                     <span class="relative px-6 py-2.5 transition-all ease-in duration-75 bg-gray-900 text-white group-hover:bg-opacity-0 uppercase tracking-widest">
                         Enquire
                     </span>
@@ -268,7 +273,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
                 
                 <!-- Card 1: Private & Architectural (Wide) -->
-                <div class="col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end rounded-xl" data-aos="fade-up">
+                <!-- MODIFIED: Added mobile order-1 and kept desktop order-1 -->
+                <div class="order-1 md:order-1 col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end rounded-xl" data-aos="fade-up">
                     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 grayscale"></div>
                     <div class="relative z-10">
                         <!-- Restored original tags -->
@@ -280,7 +286,8 @@
                 </div>
 
                 <!-- Card 2: Critical Maintenance -->
-                <div class="glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                <!-- MODIFIED: Added mobile order-3 and desktop order-2 -->
+                <div class="order-3 md:order-2 glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-lumx-cyan/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-lumx-cyan"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" /></svg>
                     </div>
@@ -292,7 +299,8 @@
                 </div>
 
                 <!-- Card 3: Compliance Assurance -->
-                <div class="glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up">
+                <!-- MODIFIED: Added mobile order-4 and desktop order-3 -->
+                <div class="order-4 md:order-3 glass-card p-8 glow-border transition-all duration-500 flex flex-col justify-between group rounded-xl" data-aos="fade-up">
                     <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-lumx-cyan/20 transition-colors">
                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-lumx-cyan"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     </div>
@@ -303,7 +311,8 @@
                 </div>
 
                 <!-- Card 4: Workspace & Retail (Wide) -->
-                <div class="col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end md:order-last rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                <!-- MODIFIED: Added mobile order-2 and kept desktop order-last -->
+                <div class="order-2 md:order-last col-span-1 md:col-span-2 glass-card p-10 glow-border transition-all duration-500 group relative overflow-hidden flex flex-col justify-end rounded-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 grayscale"></div>
                     <div class="relative z-10">
                         <!-- Restored original tag -->
@@ -323,7 +332,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div data-aos="fade-right">
                     <span class="text-lumx-cyan font-mono font-bold tracking-widest uppercase text-xs mb-4 block">The Standard</span>
-                    <h2 class="text-5xl font-black text-white mb-8 leading-tight">Direct oversight. <br>Uncompromising quality.</h2>
+                    <!-- FIX: Responsive font sizing and word break for mobile view -->
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-8 leading-tight break-words">Direct oversight. <br>Uncompromising quality.</h2>
                     <!-- MODIFIED: Removed bold 'direct accountability' and rewrote to avoid repeating 'direct' -->
                     <p class="text-lumx-subtext text-lg mb-8 leading-relaxed">
                         With over 15 years of focused experience, LUMX offers total responsibility for project outcomes. You deal with the Director, ensuring every detail aligns with the design intent.
