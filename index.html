@@ -239,7 +239,6 @@
     </div>
   </section>
 
-  <!-- the rest of your page stays the same from here -->
   <!-- Stats Bar -->
   <div class="relative z-30 -mt-12 mx-4 md:mx-12 lg:mx-32" data-aos="fade-up" data-aos-delay="200">
     <div class="glass-card grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 rounded-xl overflow-hidden">
@@ -425,8 +424,11 @@
             Direct engagement. Technical expertise. Whether you’re an architect, designer, or managing a commercial building, discuss your project directly with the Director.
           </p>
 
-          <form name="contact" method="POST" data-netlify="true" class="max-w-md space-y-4 font-mono text-sm">
-            <input type="hidden" name="form-name" value="contact">
+          <!-- ✅ UPDATED: Web3Forms (replaces Netlify form) -->
+          <form action="https://api.web3forms.com/submit" method="POST" class="max-w-md space-y-4 font-mono text-sm">
+            <input type="hidden" name="access_key" value="07a49fdd-ea23-4aac-b682-f9e0bd2b54f3">
+            <input type="hidden" name="subject" value="New enquiry — LUMX Electrical Co.">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
             <div class="relative group">
               <div class="relative bg-black p-1">
@@ -443,7 +445,7 @@
 
             <div class="relative group">
               <div class="relative bg-black p-1">
-                <textarea name="message" id="message" rows="4" class="block w-full p-4 bg-[#111] border border-gray-800 text-white placeholder-gray-500 focus:border-lumx-cyan focus:ring-1 focus:ring-lumx-cyan outline-none transition-all rounded-sm" placeholder="> Project details, scope, and timeline"></textarea>
+                <textarea name="message" id="message" rows="4" class="block w-full p-4 bg-[#111] border border-gray-800 text-white placeholder-gray-500 focus:border-lumx-cyan focus:ring-1 focus:ring-lumx-cyan outline-none transition-all rounded-sm" placeholder="> Project details, scope, and timeline" required></textarea>
               </div>
             </div>
 
@@ -532,13 +534,11 @@
   function closeMobileMenuInstant() {
     if (!navToggle || !navMenu) return;
 
-    // hide dropdown immediately
     navToggle.setAttribute('aria-expanded', 'false');
     navMenu.classList.add('hidden');
 
     const scrolled = window.scrollY > 50;
 
-    // force nav to jump to transparent instantly (no transition flash)
     nav.classList.add('no-trans');
     setNavTransparent();
 
@@ -552,13 +552,11 @@
       floatingLogo.classList.remove('is-visible');
     }
 
-    // re-enable transitions next paint
     requestAnimationFrame(() => {
       nav.classList.remove('no-trans');
     });
   }
 
-  // close on the earliest “user is about to scroll” signals (prevents black flash)
   function preScrollCloseIfNeeded() {
     const isMobile = window.innerWidth < 768;
     if (isMobile && isMenuOpen()) closeMobileMenuInstant();
@@ -582,9 +580,7 @@
         return;
       }
 
-      // mobile
       if (menuOpen) {
-        // (normally only happens if user didn’t scroll via touchmove/wheel)
         nav.classList.remove('mobile-nav-off');
         setNavBlack();
         floatingLogo.classList.add('is-hidden');
@@ -608,7 +604,6 @@
         return;
       }
 
-      // mobile top
       if (menuOpen) {
         nav.classList.remove('mobile-nav-off');
         setNavBlack();
@@ -640,11 +635,9 @@
     });
   }
 
-  // key change: close BEFORE scroll paints (touchmove + wheel)
   window.addEventListener('touchmove', preScrollCloseIfNeeded, { passive: true });
   window.addEventListener('wheel', preScrollCloseIfNeeded, { passive: true });
 
-  // keep your normal scroll logic
   window.addEventListener('scroll', handleScrollUI, { passive: true });
   window.addEventListener('resize', handleScrollUI);
 
